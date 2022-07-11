@@ -25,7 +25,13 @@ Route::get('/upload', function () {
 });
 
 Route::post('/upload', function (Request $request) {
-   $uploadedFileUrl = Cloudinary::upload($request->file('file')->getRealPath())->getSecurePath();
-    dd($uploadedFileUrl);
+   // Upload any File to clodinary
+
+$uploadedFileUrl = Cloudinary::uploadFile($request->file('file')->getRealPath(),[
+    'folder' => 'Document',
+])->getSecurePath();
+
+      return redirect('/upload')
+         ->with('flash','Upload was sent successfully');
     
 });

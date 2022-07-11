@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+    @if(session('flash'))
+        <p style='color:white; background-color:black; font-size:40px; text-align:center;'>{{session('flash')}}</p>
+
+    @endif
     <form action="" method='post' enctype="multipart/form-data">
         @csrf
             <input type="file" name="file">
